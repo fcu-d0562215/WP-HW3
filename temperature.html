@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>攝氏與華氏轉換</title>
+</head>
+<script language='javascript'>
+function changeTemp(form) {
+    event.preventDefault();
+    var tempvalue = form.val.value;
+    var tempmode = form.mode.value;
+    var answer;
+    if (tempmode == 'c') {
+        answer = tempvalue * (9 / 5) + 32;
+    } else if (tempmode == 'f') {
+        answer = (tempvalue - 32) * 5 / 9;
+    }
+    answer = Math.round(answer * 100) / 100;
+    document.getElementById("answer").innerHTML=answer;
+    return false;
+}
+</script>
+
+<body>
+    <div>
+        <form onSubmit="changeTemp(this);">
+            <input type="text" name="val">
+            <select type="select" name="mode">
+                <option value="c">攝氏</option>
+                <option value="f">華氏</option>
+            </select>
+            <input type="submit" value="轉換">
+        </form>
+    </div>
+    <div id="answer"></div>
+</body>
+
+</html>
